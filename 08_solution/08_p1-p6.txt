@@ -1,0 +1,89 @@
+------p1-----
+n = int(input())
+id2cities = dict()
+ids = list()
+for i in range(n):
+  uid,cities = input().split(":")
+  id2cities[uid] = {e.strip() for e in cities.split(",")}
+  ids.append(uid)
+  
+keyid  = input().strip()
+cities = id2cities[keyid]
+out = [uid for uid in ids
+       if uid != keyid and len(cities & id2cities[uid]) > 0]
+
+if len(out) == 0:
+    print("Not Found")
+else:
+    print('\n'.join(out))
+
+------p2-----
+progID_to_appIDs = {}
+n = int(input())
+for i in range(n):
+  id, p1, p2, p3, p4 = input().split(",")
+  id = id.strip(); p1 = p1.strip(); p2 = p2.strip();
+  p3 = p3.strip(); p4 = p4.strip();
+  plist = [p1,p2,p3,p4]
+  for p in plist:
+      if p not in progID_to_appIDs :
+        progID_to_appIDs[p] = []
+      progID_to_appIDs[p].append(id)
+
+progs = [e.strip() for e in input().split(",")]
+for prog in progs:
+  if prog in progID_to_appIDs :
+    print(prog, "->", ", ".join(progID_to_appIDs[prog]))
+  else:
+    print(prog, "->", "Not found")
+
+------p3-----
+l = [int(e) for e in input().split()]
+a = set()
+b = set()
+for ll in l:
+  if ll not in a:
+    a.update({ll})
+  elif ll in a and ll not in b:
+    b.update({ll})
+if len(a-b)!=0:
+  print(min(a-b))
+else:
+  print("NONE")
+
+------p4-----
+x = [int(e) for e in input().split()]
+K = int(input())
+n = len(x)
+a = [1 for i in range(n) for j in range(i+1,n) if x[i]+x[j]==K]    
+print(len(a))
+
+------p5-----
+s = {int(e) for e in input().split()}
+K = int(input())
+a = [1 for e in s if e < K-e and K-e in s ]
+print(len(a))
+
+------p6-----
+n,m = [int(e) for e in input().split()]
+d = [int(e) for e in input().split()]
+q = [int(e) for e in input().split()]
+sum = { d[a]+d[b] for a in range(n) for b in range(a+1,n) }
+p = { s:[] for s in sum }
+for a in range(n):
+    for b in range(a+1,n):
+        p[d[a]+d[b]].append((a,b))
+
+for i in range(m):
+    for j in range(n):
+        x = q[i] - d[j]
+        if x in p:
+            for (a,b) in p[x]:
+                if j!=a and j!=b:
+                    print("YES")
+                    break
+            else:
+                continue
+            break
+    else:
+        print("NO")

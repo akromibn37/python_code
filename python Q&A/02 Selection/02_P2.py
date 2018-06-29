@@ -1,0 +1,11 @@
+x = float(input())
+if x > 100 or x < 0 :
+    print('ERROR')
+elif x >= 80 : print('A')
+elif x >= 75 : print('B+')
+elif x >= 70 : print('B')
+elif x >= 65 : print('C+')
+elif x >= 60 : print('C')
+elif x >= 55 : print('D+')
+elif x >= 50 : print('D')
+else : print('F')

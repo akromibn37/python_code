@@ -1,0 +1,7 @@
+BE Chicken
+SE Shrimp
+VE Lettuce
+ET Egg
+SE Crab
+SE Salmon
+VE Spinach

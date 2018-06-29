@@ -1,0 +1,5 @@
+rfind
+hello
+hello?hello!hello 0 11
+hello+hello+hello 6 17
+hello/hello/hello 3 8
